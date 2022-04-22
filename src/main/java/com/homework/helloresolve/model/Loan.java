@@ -28,6 +28,8 @@ public class Loan {
     private final String name;
     @NonNull
     private final String id;
+    private final float paidAmount;
+    private final Date startDate;
     @NonNull
     @JsonIgnore
     private final BigDecimal amount;

@@ -2,6 +2,7 @@ package com.homework.helloresolve.controller;
 
 import com.homework.helloresolve.LoanService;
 import com.homework.helloresolve.model.Loan;
+import com.homework.helloresolve.model.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,14 @@ public class OperationController {
                         @RequestParam(value = "amount") String amount,
                         @RequestParam(value = "annualInterestRate") String annualInterestRateRaw,
                         @RequestParam(value = "termsInMonths") int termsInMonths) {
+        return loanService.addLoan(name.trim(), id.trim(), amount.trim(), annualInterestRateRaw.trim(), termsInMonths);
+    }
+
+    @PostMapping("/loans/{loan_id}/")
+    public Loan addLoan(@RequestParam(value = "id") String id,
+                        @RequestParam(value = "amount") String amount) {
+        Payment payment;
+        loanService.applyPayment(payment);
         return loanService.addLoan(name.trim(), id.trim(), amount.trim(), annualInterestRateRaw.trim(), termsInMonths);
     }
 }
